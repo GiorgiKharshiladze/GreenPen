@@ -1,2 +1,2 @@
 # GreenPen
-Software to get books for free
+Software to get books for free using libgen.io
