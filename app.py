@@ -13,8 +13,17 @@ def getContent(url):
 	soup = BeautifulSoup(html, 'html5lib')
 	return soup
 
+def getInfo(url):
+	content = getContent(url)
+	tables = content.findAll('table')
+	return tables
+
 keyword = "harry potter"
 keyword_slug = keyword.replace(" ","+")
 my_url = base + keyword_slug
 
-# print(getContent(my_url))
+print(getInfo(my_url)[1])
+
+print("bulion")
+
+print(getInfo(my_url)[2])
