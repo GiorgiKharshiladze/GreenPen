@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import json, requests, datetime
 
-base = 'http://libgen.io/search.php?&phrase=1&view=simple&req='
+base = 'http://libgen.io/search.php?&phrase=1&open=0&res=100&view=simple&req='
 
 def getHTML(url):
 	response = requests.get(url)
