@@ -24,7 +24,8 @@ def getBooks(url):
 	books = library.findAll('tr')[1:]
 	return books
 
-def parseBooks(books):
+def parseBooks(url):
+	books = getBooks(url)
 	columns = ['author', 'title', 'publisher', 'year', 'pages', 'lang', 'size', 'extension']
 	df = pd.DataFrame(columns=columns)
 
@@ -50,4 +51,4 @@ keyword = "harry potter"
 keyword_slug = keyword.replace(" ","+")
 my_url = base + keyword_slug
 
-print(parseBooks(getBooks(my_url)))
+print(parseBooks(my_url))
