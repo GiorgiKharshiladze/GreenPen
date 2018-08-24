@@ -23,7 +23,7 @@ def getBooks(url):
 
 def parseBooks(url):
 	books = getBooks(url)
-	data = []
+	data = {}
 
 	for i in range(len(books)):
 		bookInfo = books[i].findAll('td')
@@ -38,6 +38,6 @@ def parseBooks(url):
 		extension = bookInfo[8].text
 		mirrors = bookInfo[9:]
 		row = {'author':author, 'title':title, 'publisher':publisher, 'year':year, 'pages':pages, 'lang':lang, 'size':size, 'extension':extension}
-		data.append(row)
+		data[i+1] = row
 
 	return data
