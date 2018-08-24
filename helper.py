@@ -38,6 +38,6 @@ def parseBooks(url):
 		extension = bookInfo[8].text
 		mirrors = bookInfo[9:]
 		row = {'author':author, 'title':title, 'publisher':publisher, 'year':year, 'pages':pages, 'lang':lang, 'size':size, 'extension':extension}
-		data[i] = row
+		data.append(row)
 
 	return data
