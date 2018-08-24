@@ -1,5 +1,7 @@
 from bs4 import BeautifulSoup
-import requests, datetime
+import requests, datetime, json
+
+key = json.load(open('keys.json', 'r'))
 
 def getHTML(url):
 	response = requests.get(url)
@@ -36,8 +38,16 @@ def parseBooks(url):
 		lang = bookInfo[6].text
 		size = bookInfo[7].text
 		extension = bookInfo[8].text
-		mirrors = bookInfo[9:]
-		row = {'author':author, 'title':title, 'publisher':publisher, 'year':year, 'pages':pages, 'lang':lang, 'size':size, 'extension':extension}
+		url = bookInfo[10].a['href'] # bookInfo[9:] are all the mirrors for book download
+		row = {'author':author, 'title':title, 'publisher':publisher, 'year':year, 'pages':pages, 'lang':lang, 'size':size, 'extension':extension, 'url':url}
 		data[i+1] = row
 
 	return data
+
+def getDownload(md5):
+	url = key['download'] + md5
+	content = getContent(url)
+	link = content.table.tbody.tr.findAll('td')[2].a['href']
+	return link
+
+print(getDownload('50740153C2BF4A5DB99F8B807B4A4B60'))

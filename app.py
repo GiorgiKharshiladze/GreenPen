@@ -1,8 +1,6 @@
 from bottle import route, get, post, error, template, run, request, static_file
-import json, helper as hlp
+import helper as hlp
 
-
-key = json.load(open('keys.json', 'r'))
 
 @route('/')
 def index():
@@ -11,11 +9,14 @@ def index():
 
 @get('/search')
 def search():
-	print(request.query)
 	keyword = request.query['keyword']
-	my_url = key['base'] + keyword
+	my_url = hlp.key['base'] + keyword
 	# return template('results', data=hlp.parseBooks(my_url))
 	return hlp.parseBooks(my_url)
+
+@get('/download')
+def download():
+	keyword = request.query['md5']
 
 
 # Access static files
