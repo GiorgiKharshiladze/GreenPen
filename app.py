@@ -13,8 +13,7 @@ def index():
 def search():
 	print(request.query)
 	keyword = request.query['keyword']
-	keyword_slug = keyword.replace(" ","+")
-	my_url = key['base'] + keyword_slug
+	my_url = key['base'] + keyword
 	# return template('results', data=hlp.parseBooks(my_url))
 	return hlp.parseBooks(my_url)
 
