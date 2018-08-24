@@ -16,7 +16,8 @@ def search():
 
 @get('/download')
 def download():
-	keyword = request.query['md5']
+	md5 = request.query['md5']
+	return {"url": hlp.getDownload(md5)}
 
 
 # Access static files
