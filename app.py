@@ -15,6 +15,7 @@ def search():
 	keyword_slug = keyword.replace(" ","+")
 	my_url = key['base'] + keyword_slug
 	# return template('results', data=hlp.parseBooks(my_url))
+	# We don't have to return as a JSON
 	return hlp.parseBooks(my_url)
 
 
