@@ -49,5 +49,3 @@ def getDownload(md5):
 	content = getContent(url)
 	link = content.table.tbody.tr.findAll('td')[2].a['href']
 	return link
-
-print(getDownload('50740153C2BF4A5DB99F8B807B4A4B60'))
